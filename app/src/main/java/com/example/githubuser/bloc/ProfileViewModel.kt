@@ -1,17 +1,22 @@
 package com.example.githubuser.bloc
 
+import android.app.Application
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.githubuser.service.config.ApiConfig
+import com.example.githubuser.service.database.entity.Likes
+import com.example.githubuser.service.database.repo.LikesRepo
 import com.example.githubuser.service.response.GithubUserDetailResponse
 import com.example.githubuser.service.response.GithubUserResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ProfileViewModel : ViewModel() {
+class ProfileViewModel(application: Application) : ViewModel() {
+
+    private val mNoteRepository: LikesRepo = LikesRepo(application)
 
     private val _user = MutableLiveData<GithubUserDetailResponse>()
     val user: LiveData<GithubUserDetailResponse> = _user
@@ -123,6 +128,18 @@ class ProfileViewModel : ViewModel() {
 
         // menampilkan loading indicator
         _isLoading.value = true
+    }
+
+    fun insert(likes: Likes) {
+        mNoteRepository.insert(likes)
+    }
+
+    fun update(likes: Likes) {
+        mNoteRepository.update(likes)
+    }
+
+    fun delete(likes: Likes) {
+        mNoteRepository.delete(likes)
     }
 
     companion object {

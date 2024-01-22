@@ -7,10 +7,13 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.githubuser.bloc.MainViewModel
 import com.example.githubuser.databinding.ActivityMainBinding
+import com.example.githubuser.service.database.entity.Likes
+import com.example.githubuser.service.database.repo.LikesRepo
 import com.example.githubuser.service.response.GithubUserResponse
 import com.example.githubuser.ui.adapter.GithubUserListAdapter
 
@@ -18,6 +21,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val mainViewModel by viewModels<MainViewModel>()
+    private val mNoteRepository: LikesRepo = LikesRepo(application)
+    fun getAllNotes(): LiveData<List<Likes>> = mNoteRepository.getAllNotes()
 
     private val searchResultLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -48,7 +53,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun setUserListData(user: List<GithubUserResponse>?): Unit {
+    private fun setUserListData(user: List<GithubUserResponse>?) {
         val adapter = GithubUserListAdapter()
         adapter.submitList(user)
         binding.rvUser.adapter = adapter

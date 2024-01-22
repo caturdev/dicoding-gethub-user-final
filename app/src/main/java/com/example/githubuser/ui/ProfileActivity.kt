@@ -1,20 +1,20 @@
 package com.example.githubuser.ui
 
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
 import androidx.annotation.StringRes
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.example.githubuser.R
 import com.example.githubuser.bloc.ProfileViewModel
 import com.example.githubuser.databinding.ActivityProfileBinding
 import com.example.githubuser.model.GithubUser
+import com.example.githubuser.service.database.entity.Likes
 import com.example.githubuser.service.response.GithubUserDetailResponse
 import com.example.githubuser.ui.adapter.FollowPagerAdapter
 import com.google.android.material.tabs.TabLayout
@@ -80,7 +80,7 @@ class ProfileActivity : AppCompatActivity() {
         githubLoading.setAnimationFromUrl("https://lottie.host/f4aa2a91-160f-40bf-927a-85ca4d9f1074/HesvD4FI65.json")
     }
 
-    private fun setUserData(user: GithubUserDetailResponse): Unit {
+    private fun setUserData(user: GithubUserDetailResponse) {
 
         // menampilkan user avatar
         Glide
