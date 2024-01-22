@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Github User</string>
+    <string name="github_user">Github User</string>
+    <string name="search_button">search button</string>
+    <string name="tab_followers">followers</string>
+    <string name="tab_following">following</string>
+    <string name="no_name">No Name</string>
+    <string name="no_username">no username</string>
+    <string name="no_location">no location</string>
+    <string name="no_company">no company</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="empty_placeholder_sub_desc">silahkan melakukan pencarian user github di sini</string>
+    <string name="empty_placeholder_desc">Hallo Selamat Datang</string>
+    <string name="search_history">Riwayat Pencarian</string>
+    <string name="insert_username">Masukkan nama user</string>
+</resources>
